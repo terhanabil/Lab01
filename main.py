@@ -8,7 +8,6 @@ def read_sequence():
 
 
 def read_int(message):
-    """Read a positive integer from the keyboard."""
     while True:
         try:
             value = int(input(message))
