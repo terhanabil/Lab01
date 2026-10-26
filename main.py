@@ -1,5 +1,4 @@
 def read_sequence():
-    """Read a sequence of numbers from the keyboard."""
     while True:
         text = input("Enter numbers separated by spaces: ")
         try:
@@ -21,7 +20,6 @@ def read_int(message):
 
 
 def read_array():
-    """Read a 2D array whose dimensions are given by the user."""
     rows = read_int("Number of rows: ")
     cols = read_int("Number of columns: ")
     array = []
@@ -50,7 +48,6 @@ def display_array(array):
         print("  " + " ".join(f"{x:8g}" for x in row))
 
 def read_from_file():
-    """Read a sequence of numbers from a text file named by the user."""
     filename = input("Enter the file name: ").strip()
     try:
         with open(filename, "r") as f:
