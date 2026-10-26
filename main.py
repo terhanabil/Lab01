@@ -49,16 +49,41 @@ def display_array(array):
     for row in array:
         print("  " + " ".join(f"{x:8g}" for x in row))
 
+def read_from_file():
+    """Read a sequence of numbers from a text file named by the user."""
+    filename = input("Enter the file name: ").strip()
+    try:
+        with open(filename, "r") as f:
+            content = f.read()
+        return [float(x) for x in content.split()]
+    except FileNotFoundError:
+        print(f"Error: the file '{filename}' does not exist.")
+    except ValueError:
+        print("Error: the file contains values that are not numbers.")
+    return None
 
 def main():
-    print("=== Sequence ===")
-    seq = read_sequence()
-    display_sequence(seq)
+    while True:
+        print("\n===== MENU =====")
+        print("1. Read a sequence from the keyboard")
+        print("2. Read an array from the keyboard")
+        print("3. Read a sequence from a file")
+        print("0. Exit")
+        choice = input("Choose an option: ").strip()
 
-    print("\n=== Array ===")
-    arr = read_array()
-    display_array(arr)
-
+        if choice == "1":
+            display_sequence(read_sequence())
+        elif choice == "2":
+            display_array(read_array())
+        elif choice == "3":
+            data = read_from_file()
+            if data is not None:
+                display_sequence(data)
+        elif choice == "0":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid option.")
 
 if __name__ == "__main__":
     main()
